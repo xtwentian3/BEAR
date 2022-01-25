@@ -6,8 +6,8 @@ import torch.nn.functional as F
 import utils
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-from logger import logger
-from logger import create_stats_ordered_dict
+# from logger import logger
+# from logger import create_stats_ordered_dict
 
 # Implementation of Twin Delayed Deep Deterministic Policy Gradients (TD3)
 # Paper: https://arxiv.org/abs/1802.09477

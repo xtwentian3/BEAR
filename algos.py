@@ -6,8 +6,8 @@ import utils
 import torch.distributions as td
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-from logger import logger
-from logger import create_stats_ordered_dict
+# from logger import logger
+# from logger import create_stats_ordered_dict
 
 class Actor(nn.Module):
     """Actor used in BCQ"""

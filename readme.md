@@ -57,3 +57,6 @@ If you use this code in your research, please cite our paper:
 ```
 
 For any questions/issues please contact Aviral Kumar at aviralk@berkeley.edu.
+
+
+git clone https://github.com/rail-berkeley/d4rl.git

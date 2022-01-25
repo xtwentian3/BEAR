@@ -8,10 +8,10 @@ import utils
 import DDPG
 import algos
 import TD3
-from logger import logger, setup_logger
-from logger import create_stats_ordered_dict
-import point_mass
-
+# from logger import logger, setup_logger
+# from logger import create_stats_ordered_dict
+# import point_mass
+#
 import d4rl
 
 def load_hdf5_mujoco(dataset, replay_buffer):
@@ -182,7 +182,7 @@ if __name__ == "__main__":
         num_random=args.num_random,
         margin_threshold=args.margin_threshold,
     )
-    setup_logger(file_name, variant=variant, log_dir=args.log_dir + file_name)
+    # setup_logger(file_name, variant=variant, log_dir=args.log_dir + file_name)
 
     if algo_name == 'BCQ':
         policy = algos.BCQ(state_dim, action_dim, max_action)
@@ -194,7 +194,7 @@ if __name__ == "__main__":
         policy = algos.DQfD(state_dim, action_dim, max_action, lambda_=args.lamda, margin_threshold=float(args.margin_threshold))
     elif algo_name == 'KLControl':
         policy = algos.KLControl(2, state_dim, action_dim, max_action)
-    elif algo_name == 'BEAR':
+    elif algo_name == 'BEAR':   # 默认的
         policy = algos.BEAR(2, state_dim, action_dim, max_action, delta_conf=0.1, use_bootstrap=False,
             version=args.version,
             lambda_=float(args.lamda),
@@ -224,7 +224,7 @@ if __name__ == "__main__":
     if 'maze' in args.env_name or 'human' in args.env_name or 'cloned' in args.env_name:
         load_hdf5_others(env.unwrapped.get_dataset(), replay_buffer)
     else:
-        load_hdf5_mujoco(env.unwrapped.get_dataset(), replay_buffer)
+        load_hdf5_mujoco(env.unwrapped.get_dataset(), replay_buffer)  # 默认
     
     evaluations = []
 
@@ -241,8 +241,8 @@ if __name__ == "__main__":
 
         training_iters += args.eval_freq
         print ("Training iterations: " + str(training_iters))
-        logger.record_tabular('Training Epochs', int(training_iters // int(args.eval_freq)))
-        logger.record_tabular('AverageReturn', ret_eval)
-        logger.record_tabular('VarianceReturn', var_ret)
-        logger.record_tabular('MedianReturn', median_ret)
-        logger.dump_tabular()
+        # logger.record_tabular('Training Epochs', int(training_iters // int(args.eval_freq)))
+        # logger.record_tabular('AverageReturn', ret_eval)
+        # logger.record_tabular('VarianceReturn', var_ret)
+        # logger.record_tabular('MedianReturn', median_ret)
+        # logger.dump_tabular()
